@@ -1,8 +1,15 @@
 package DataBase_Lesson6;
 
+
 import org.springframework.jdbc.core.JdbcTemplate;
+
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.jdbc.datasource.SingleConnectionDataSource;
+
+
+import java.util.ArrayList;
+
+import java.util.List;
 
 public class MainDB {
     private static int size = 10;
@@ -21,10 +28,17 @@ public class MainDB {
 
         ClearTableAndMakeNew(jdbcTemplate);
 
-
+//     Готовим входные данные для батча
+        List<Object[]> list = new ArrayList<>();
         for (Students student : students) {
-            jdbcTemplate.update("insert into students (name, assessment) values(?,?)", student.getName(),student.getAssessment());
+            list.add(new Object[]{student.getName(), student.getAssessment()});
         }
+        jdbcTemplate.batchUpdate("insert into students (name, assessment) values(?,?)", list);
+
+
+//        for (Students student : students) {
+//            jdbcTemplate.update("insert into students (name, assessment) values(?,?)", student.getName(),student.getAssessment());
+//        }
     }
 
     private static void ClearTableAndMakeNew(JdbcTemplate jdbcTemplate) {
