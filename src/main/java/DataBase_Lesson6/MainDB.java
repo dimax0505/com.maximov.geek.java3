@@ -2,13 +2,9 @@ package DataBase_Lesson6;
 
 
 import org.springframework.jdbc.core.JdbcTemplate;
-
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.jdbc.datasource.SingleConnectionDataSource;
-
-
 import java.util.ArrayList;
-
 import java.util.List;
 
 public class MainDB {
@@ -20,7 +16,7 @@ public class MainDB {
     public static void main(String[] args) {
         DriverManagerDataSource dataSource = makeConnectToDB();
 
-        makeStudentssArray(size);
+        makeStudentsArray(size);
 
         JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
         System.out.println("Создаем базу данных или подключаемся к существующей");
@@ -56,7 +52,7 @@ public class MainDB {
         return dataSource;
     }
 
-    private static void makeStudentssArray(int size) {
+    private static void makeStudentsArray(int size) {
         students = new Students[size];
         for (int i = 0; i < size; i++) {
             students[i] = new Students("Студент" + i, 1.5 + i);
