@@ -1,10 +1,14 @@
 package DataBase_Lesson6;
 
+import java.util.HashSet;
+import java.util.TreeSet;
+
 public class Students {
 
     private int id;
    private String name;
     private double assesment;
+
 
     public Students(String name, double assesment) {
 

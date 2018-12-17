@@ -14,6 +14,7 @@ public class MainDB {
 
 
     public static void main(String[] args) {
+
         DriverManagerDataSource dataSource = makeConnectToDB();
 
         makeStudentsArray(size);
